@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DragonBallZ</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+</head>
+
+<body>
+
+
+    <div class="header">
+    <button class="newgame" onclick="
+    charges.player=0;
+    charges.cpu=0;
+    localStorage.removeItem('charges');
+    updatecharges();
+    updatemove('COMBAT MOVE');
+    updatemove2('COMBAT MOVE');
+    console.log(`playercharge:${charges.player}`);
+    console.log(`cpucharges:${charges.cpu}`);
+    updateresult('RESULT');       
+    ">New Game</button>
+
+    <a class="title" href="manual.html">
+        <p class="titletext">Dragon Ball Z</p>
+    </a>
+    
+    <button class="resetscore" onclick="
+    score.wins=0;
+    score.losses=0;
+    localStorage.removeItem('score');
+    updatescore();
+    console.log(`wins:${score.wins}`);
+    console.log(`Losses:${score.losses}`);
+    updateresult('RESULT');
+    ">Reset score</button>
+    </div>
+
+    <div class="middle">
+        <div class="pside">
+
+            <div class="psidetxt">
+                <p class="psidetext">PLAYER</p>
+            </div>
+
+            <div class="pccount">
+                <div class="pcharges">
+                    <p>WINS</p>
+                </div>
+                <div class="pcount">
+                    <p class="pnum">0</p>
+                </div>  
+            </div>
+
+            <div class="pccount1">
+                <div class="pcharges1">
+                    <p>CHARGES</p>
+                </div>
+                <div class="pcount1">
+                    <p class="pnum1">0</p>
+                </div>  
+            </div>
+            
+            <div class="pmove">
+                <div class="ptext">
+                    <p class="subtext">COMBAT MOVE</p>
+                </div>
+                <div class="pcontainer">
+                    
+                </div>
+            </div>
+                 
+        </div>
+        <div class="cside">
+
+            <div class="csidetxt">
+                <p class="csidetext">COMPUTER</p>
+            </div>
+
+            <div class="cccount">
+                <div class="ccharges">
+                    <p>WINS</p>
+                </div>
+                <div class="ccount">
+                    <p class="cnum">0</p>
+                </div>
+            </div>
+
+            <div class="cccount1">
+                <div class="ccharges1">
+                    <p>CHARGES</p>
+                </div>
+                <div class="ccount1">
+                    <p class="cnum1">0</p>
+                </div>
+            </div>
+
+            <div class="pmove1">
+                <div class="ptext1">
+                    <p class="subtext1">COMBAT MOVE</p>
+                </div>
+                <div class="pcontainer1">
+                    
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+ 
+    <div class="mainresult">
+        <p class="finalresult">RESULT</p>
+    </div>
+
+    <div class="charge">
+        <button class="chargebut" onclick="
+        let oppmove=cpuplay(); 
+        console.log(oppmove);
+        count(oppmove,'CHARGE');
+        "><img class="chargeimg" src="images/CHARGE.png"></button>
+        <div class="chargetxt">
+            <p>CHARGE</p>
+        </div>
+        
+       
+    </div>
+    
+         
+    <div class="cam">
+        <button class="cambut" onclick="
+        let oppmove1=cpuplay();
+        console.log(oppmove1);
+        count(oppmove1,'KAMEHAMEHA');
+        "><img class="camimg" src="start/kamehameha.jpg"></button>
+        <div class="camtxt">
+            <p>KAMEHAMEHA</p>
+        </div>
+        <div class="cam1">
+            <div class="cam10">
+                <p>Attacking move</p>
+            </div>
+            <div class="cam11">
+                <p>1 charge</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="beam">
+        <button class="beambut"onclick="
+        let oppmove3=cpuplay(); 
+        console.log(oppmove3);
+        count(oppmove3,'BEAMCANNON');
+        "><img class="beamimg" src="start/beamcannon.jpg"></button>
+        <div class="beamtxt">
+            <p>BEAMCANNON</p>
+        </div>
+        <div class="cam1">
+            <div class="cam10">
+                <p>Attacking move</p>
+            </div>
+            <div class="cam11">
+                <p>2 charges</p>
+            </div>
+        </div>
+    </div>
+ 
+    
+    <div class="disc">
+        <button class="discbut" onclick="
+        let oppmove5=cpuplay();
+        console.log(oppmove5);
+        count(oppmove5,'DESTRUCTODISC');
+        "><img class="discimg" src="start/disc.jpg"></button>
+        <div class="disctxt">
+            <p>DESTRUCTODISC</p>
+        </div>
+        <div class="cam1">
+            <div class="cam10">
+                <p>Attacking move</p>
+            </div>
+            <div class="cam11">
+                <p>3 charges</p>
+            </div>
+        </div>
+        
+    </div>
+   
+
+    <div class="final">
+        <button class="finalbut" onclick="
+        let oppmove7=cpuplay();
+        console.log(oppmove7);
+        count(oppmove7,'FINALFLASH');
+        "><img class="finalimg" src="start/final.jpg"></button>
+        <div class="finaltxt">
+            <p>FINALFLASH</p>
+        </div>
+        <div class="cam1">
+            <div class="cam10">
+                <p>Attacking move</p>
+            </div>
+            <div class="cam11">
+                <p>4 charges</p>
+            </div>
+        </div>
+        
+    </div>
+
+    
+    <div class="gun">
+        <button class="gunbut"onclick="
+        let oppmove9=cpuplay();
+        console.log(oppmove9);
+        count(oppmove9,'GALICKGUN');
+        "><img class="gunimg" src="start/galickgun.jpg"></button>
+        <div class="guntxt">
+            <p>GALICKGUN</p>
+        </div>
+        <div class="cam1">
+            <div class="cam10">
+                <p>Attacking move</p>
+            </div>
+            <div class="cam11">
+                <p>5 charges</p>
+            </div>
+        </div>
+       
+    </div>
+ 
+    
+    <div class="sphere">
+        <button class="spherebut" onclick="
+        let oppmove11=cpuplay();
+        console.log(oppmove11);
+        count(oppmove11,'SPHEREOFDESTRUCTION');
+        "><img class="sphereimg" src="start/sphere.jpg"></button>
+        <div class="spheretxt">
+            <p class="sp1">SPHERE OF</p>
+            <p class="sp2">DESTRUCTION</p>
+        </div>
+        <div class="cam1">
+            <div class="cam10">
+                <p>Attacking move</p>
+            </div>
+            <div class="cam11">
+                <p>6 charges</p>
+            </div>
+        </div>
+        
+    </div>
+        
+
+    <div class="energy">
+        <button class="energybut" onclick="
+        let oppmove2=cpuplay();
+        console.log(oppmove2);
+        count(oppmove2,'ENERGYSHIELD');
+        "><img class="energyimg" src="start/camp (2).jpg"></button>
+        <div class="energytxt">
+            <p>ENERGYSHIELD</p>
+        </div>
+        <div class="cam1">
+            <div class="cam10">
+                <p>Defensive move</p>
+            </div>
+            <div class="cam11">
+                <p>No charge</p>
+            </div>
+        </div>
+        
+        
+    </div>
+        
+        
+    <div class="bshield">
+        <button class="bshieldbut" onclick="
+        let oppmove4=cpuplay();
+        console.log(oppmove4);
+        count(oppmove4,'BEAMSHIELD');
+        "><img class="bshieldimg" src="start/beamp.jpg"></button>
+        <div class="bshieldtxt">
+            <p>BEAMSHIELD</p>
+        </div>
+        <div class="cam1">
+            <div class="cam10">
+                <p>Defensive move</p>
+            </div>
+            <div class="cam11">
+                <p>No charge</p>
+            </div>
+        </div>
+       
+    </div>
+        
+        
+    <div class="teleport">
+        <button class="teleportbut" onclick="
+        let oppmove6=cpuplay();
+        console.log(oppmove6);
+        count(oppmove6,'TELEPORT');
+        "><img class="teleportimg" src="start/teleport.jpg"></button>
+        <div class="teleporttxt">
+            <p>TELEPORT</p>
+        </div>
+        <div class="tel1">
+            <div class="tel10">
+                <p>Defensive move</p>
+            </div>
+            <div class="tel11">
+                <p>No charge</p>
+            </div>
+        </div>
+       
+    </div>
+        
+        
+    <div class="flash">
+        <button class="flashbut" onclick="
+        let oppmove8=cpuplay();
+        console.log(oppmove8);
+        count(oppmove8,'FLASHPROTECTION');
+        "><img class="flashimg" src="start/fprotect.jpg"></button>
+        <div class="flashtxt">
+            <p>FLASHPROTECTION</p>
+        </div>
+        <div class="cam1">
+            <div class="cam10">
+                <p>Defensive move</p>
+            </div>
+            <div class="cam11">
+                <p>No charge</p>
+            </div>
+        </div>
+       
+    </div>
+        
+        
+    <div class="vest">
+        <button class="vestbut" onclick="
+        let oppmove10=cpuplay();
+        console.log(oppmove10);
+        count(oppmove10,'SUPERVEST');
+        "><img class="vestimg" src="start/vest.jpg"></button>
+        <div class="vesttxt">
+            <p>SUPERVEST</p>
+        </div>
+        <div class="vest1">
+            <div class="cam10">
+                <p>Defensive move</p>
+            </div>
+            <div class="cam11">
+                <p>No charge</p>
+            </div>
+        </div>
+       
+        
+    </div> 
+    
+    <style>
+        .header{
+    display:flex;
+    flex-direction: row;
+    position:fixed;
+    z-index: 10;
+    height:60px;
+    background-color: rgb(13, 4, 13);
+    top:0;
+    left:0;
+    right:0;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    box-shadow: 0px 3px 10px rgba(170, 170, 170, 0.3);
+}
+
+.newgame{
+    margin-left: 30px;
+    height: 50px;
+    margin-top: 5px;
+    width: 150px;
+    font-size: large;
+    font-weight: 700;
+    border-radius: 10px;  
+    background-color: rgb(33, 206, 96); 
+    
+}
+.newgame:hover{
+    background-color: rgb(26, 191, 92);
+    border-color: green;
+    cursor: pointer;
+}
+.newgame:active{
+    background-color: rgb(3, 150, 18);
+}
+
+.title{
+    height: 35px;
+    margin-top: 13px;
+    margin-left: 510px;
+    font-size:x-large;
+    font-weight: 700;
+    font-style: italic;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    text-decoration: underline;
+    color: white;
+    background-color: black;
+    border: none;
+}
+.titletext{
+    margin-top: 3px;
+}
+.title:hover{
+    cursor: pointer;
+}
+
+
+.resetscore{
+    margin-left: 510px;
+    margin-top: 5px;
+    width: 150px;
+    font-size: large;
+    font-weight: 700;
+    border-radius: 10px;
+    height: 50px;
+    background-color: gold;
+}
+.resetscore:hover{
+    background-color:rgb(221, 188, 1);
+    cursor: pointer;
+}
+.resetscore:active{
+    background-color:goldenrod;
+}
+
+.middle{
+    margin-top: 59px;
+    margin-left: -8px;
+    width: 1536px;
+    height: 375px;
+    display: flex;
+    flex-direction: row;
+}
+
+.pmove,.pmove1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    margin-left: 260px;
+    margin-top: -190px;
+}
+
+.ptext,.ptext1{
+    height: 45px;
+    font-size:18px;
+    font-weight: 600;
+    align-items: center;
+}
+
+.subtext,.subtext1{
+    margin-top: 7px;
+}
+
+
+.pcontainer,.pcontainer1{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin-top: 5px;
+    background-color: antiquewhite;
+    border: 4px solid black;
+}
+
+
+
+.pside{
+    background-color: blue;
+    width:775px;
+}
+
+.cside{
+    background-color: red;
+    width:775px;
+}
+
+.csidetxt{
+    margin-left: 318px;
+    font-size:x-large;
+    color: white;
+    text-decoration: underline;
+}
+
+.psidetxt{
+    margin-left: 337px;
+    font-size:x-large;
+    color: white;
+    text-decoration: underline;
+}
+
+.pccount,.cccount1{
+    background-color: rgb(9, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    margin-left: 20px;
+    margin-top: 70px;
+    height: 150px;
+}
+
+.cccount,.pccount1{
+    background-color: rgb(9, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    margin-left: 628px;
+    margin-top: 70px;
+    height: 150px; 
+}
+
+.pcharges,.ccharges,.pcharges1,.ccharges1{
+    font-size: larger;
+    font-weight: 600;
+    color: white;
+}
+
+.pcount,.ccount,.pcount1,.ccount1{
+    color: white;
+    height: 120px;
+    width: 118px;
+}
+
+.pnum,.cnum,.pnum1,.cnum1{
+    font-size: 100px;
+    margin-top: -23px;
+    margin-left: 32px;
+}
+
+.cccount1,.pccount1{
+    margin-top: -145px;
+}
+
+
+
+.mainresult{
+    width: 120px;
+    margin-left: 719px;
+    margin-bottom: -50px;
+    height: 30px;
+    font-weight:900;
+    font-size:20px;
+    color: rgb(6, 0, 1);
+    text-decoration: underline;
+    text-shadow: 0 0 3px brown;
+}
+
+.charge{
+    margin-left: 690px;
+    margin-top: 90px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: 0 0 3px greenyellow;  
+    position: relative;      
+}
+.chargebut{
+    height: 120px;
+    width: 120px;
+    border-radius: 60px;
+    background-color: rgb(0, 0, 0);
+    border-width: 4px;
+    border-color: rgb(192, 192, 192);
+    font-weight: 700;
+    font-size: large;
+    color: white;
+    opacity: 0.8;
+}
+
+.chargebut:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.chargebut:active{
+    opacity: 1;
+}
+.chargeimg{
+    height: 110px;
+    width: 110px;
+    border-radius: 55px;
+    margin-left: -5px;
+    margin-top: 0px; 
+}
+.chargetxt{
+    color: black;
+    font-size: large;
+    font-weight: 700;
+}
+
+.cam,.beam,.disc,.final,.gun,.energy,.bshield,.teleport,.flash,.vest,.sphere{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    position: relative;
+}
+.cambut,.beambut,.discbut,.finalbut,.gunbut,.spherebut,.energybut,.bshieldbut,.teleportbut,.flashbut,.vestbut{
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: large;
+    border-width: 3px 3px ;
+    border-color: black;
+}
+
+.camtxt,.beamtxt,.disctxt,.finaltxt,.guntxt,.spheretxt,.energytxt,.bshieldtxt,.teleporttxt,.flashtxt,.vesttxt{
+    font-weight: 600;
+    
+}
+
+.camtxt,.beamtxt,.disctxt,.finaltxt,.guntxt,.spheretxt{
+    text-shadow: 0 0 3px red;
+}
+
+.energytxt,.bshieldtxt,.teleporttxt,.flashtxt,.vesttxt{
+    text-shadow: 0 0 3px blue;
+}
+
+.cam{
+    margin-left: 40px;
+    margin-top: -240px;
+}
+.camimg{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    margin-left: -3.5px;
+    margin-top: 2px;
+}
+
+.beam{
+    margin-left: 240px;
+    margin-top: -131px;
+}
+.beamimg{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    margin-left: -3px;
+    margin-top:1.5px;
+}
+
+.disc{
+    margin-left: 435px;
+    margin-top: -131px;
+}
+.discimg{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    margin-left: -3px;
+    margin-top:1.5px;
+}
+
+.final{
+    margin-left: 40px;
+    margin-top: 15px;
+}
+.finalimg{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    margin-left: -3px;
+    margin-top:1.5px;
+}
+
+.gun{
+    margin-left: 240px;
+    margin-top: -131px;
+}
+.gunimg{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    margin-left: -3px;
+    margin-top:1.5px;
+}
+
+.sphere{
+    margin-left: 435px;
+    margin-top: -145px; 
+}
+.sphereimg{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    margin-left: -3px;
+    margin-top:1.5px;
+}
+
+.sp1{
+    margin-left: 12px;
+    margin-bottom: 10px;
+}
+.sp2{
+    margin-top: -12px;
+}
+
+.energy{
+    margin-left: 950px;
+    margin-top: -282px;
+}
+.energyimg,.bshieldimg,.teleportimg,.flashimg,.vestimg{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    margin-left: -3px;
+    margin-top:1.5px;
+}
+
+.bshield{
+    margin-left: 1160px;
+    margin-top: -131px;
+}
+
+.teleport{
+    margin-left: 1350px;
+    margin-top: -131px;
+}
+
+.flash{
+    margin-left: 1055px;
+    margin-top: 18px;
+}
+
+.vest{
+    margin-left: 1255px;
+    margin-top: -132px;
+}
+
+.cambut,.beambut,.discbut,.finalbut,.gunbut,.spherebut{
+    background-color:rgb(214, 78, 24);
+    opacity: 0.90;
+}
+
+.cambut:hover,.beambut:hover,.discbut:hover,.finalbut:hover,.gunbut:hover,.spherebut:hover{
+    opacity: 0.95;
+    cursor: pointer;
+}
+
+.cambut:active,.beambut:active,.discbut:active,.finalbut:active,.gunbut:active,.spherebut:active{
+    opacity: 1;
+}
+
+.energybut,.bshieldbut,.teleportbut,.flashbut,.vestbut{
+    background-color: rgb(185, 41, 229);
+    opacity: 0.90;
+    cursor: pointer;
+}
+
+.energybut:hover,.bshieldbut:hover,.teleportbut:hover,.flashbut:hover,.vestbut:hover{
+    opacity: 0.95;
+}
+
+.energybut:active,.bshieldbut:active,.teleportbut:active,.flashbut:active,.vestbut:active{
+    opacity: 1;
+}
+
+.mainplayer{
+    height: 198px;
+    width: 198px;
+    border-radius: 99px;
+    object-fit:cover;
+    margin-left: 1px;
+    margin-top: 0.5px;
+}
+
+.cam1{
+background-color: rgb(40, 40, 40);
+font-weight: 100;
+position: absolute;
+margin-left: 133px;
+margin-top: -25px;
+width:90px;
+height: 30px;
+padding: 7px 6px 8px 10px;
+color:white;
+font-size:smaller;
+font-family: Roboto;
+opacity:0;
+pointer-events: none;
+transition: opacity .4s;
+transition-timing-function: cubic-bezier(1,0,0,.001);
+border-radius: 10px;
+}
+
+.cam11{
+    margin-top: -15px;
+}
+
+.cam10{
+    margin-top: -12px;
+}
+
+.cam:hover .cam1{
+    opacity: 0.95;
+}
+
+.beam:hover .cam1{
+    opacity: 0.95;
+}
+
+.disc:hover .cam1{
+    opacity: 0.95;
+}
+
+.final:hover .cam1{
+    opacity: 0.95;
+}
+
+.gun:hover .cam1{
+    opacity: 0.95;
+}
+
+.sphere:hover .cam1{
+    opacity: 0.95;
+}
+
+.teleport:hover .tel1{
+    opacity: 0.95;
+}
+
+.energy:hover .cam1{
+    opacity: 0.95;
+}
+
+.bshield:hover .cam1{
+    opacity: 0.95;
+}
+
+.flash:hover .cam1{
+    opacity: 0.95;
+}
+
+.vest:hover .vest1{
+    opacity: 0.95;
+}
+  
+.tel11{
+    margin-top: -15px;
+}
+
+.tel10{
+    margin-top: -12px;
+}
+
+
+.tel1{
+background-color: rgb(40, 40, 40);
+font-weight: 100;
+position: absolute;
+margin-right: 133px;
+margin-top: -25px;
+width:90px;
+height: 30px;
+padding: 7px 6px 8px 10px;
+color:white;
+font-size:smaller;
+font-family: Roboto;
+opacity:0;
+pointer-events: none;
+transition: opacity .4s;
+transition-timing-function: cubic-bezier(1,0,0,.001);
+border-radius: 10px;
+}
+
+.vest1{
+background-color: rgb(40, 40, 40);
+font-weight: 100;
+position: absolute;
+margin-right: 133px;
+margin-top: -25px;
+width:90px;
+height: 30px;
+padding: 7px 6px 8px 10px;
+color:white;
+font-size:smaller;
+font-family: Roboto;
+opacity:0;
+pointer-events: none;
+transition: opacity .4s;
+transition-timing-function: cubic-bezier(1,0,0,.001);
+border-radius: 10px;
+}
+
+    </style>
+
+<script>
+        alert('Click on Dragon Ball Z to learn to play the game');
+ 
+
+ let charges = JSON.parse(localStorage.getItem('charges'))||{
+     player:0,
+     cpu:0
+ };
+ 
+ updatecharges();
+ 
+ 
+ let score = JSON.parse(localStorage.getItem('score'))||{
+     wins:0,
+     losses:0
+ }; 
+ 
+ updatescore();
+ 
+ 
+ 
+ 
+ function cpuplay(){
+ 
+ let cpumove='';
+ 
+ if(charges.cpu===0 && charges.player===0){
+     cpumove='CHARGE';                               //
+ }else if(charges.cpu===0 && charges.player===1){
+     let random=Math.ceil(Math.random()*2);
+     if(random===1){
+         cpumove='CHARGE';
+     }
+     else if(random===2){
+         cpumove='ENERGYSHIELD';
+     }                                               //
+ }else if(charges.cpu===1 && charges.player===0){
+     let random1=Math.ceil(Math.random()*2);
+     if(random1===1){
+         cpumove='CHARGE';
+     }
+     else if(random1===2){
+         cpumove='KAMEHAMEHA';
+     }                                                //
+ }else if(charges.cpu===1 && charges.player===1){
+     let random2=Math.ceil(Math.random()*3);
+     if(random2===1){
+         cpumove='CHARGE';
+     }
+     else if(random2===2){
+         cpumove='ENERGYSHIELD';
+     }  
+     else if(random2===3){
+         cpumove='KAMEHAMEHA';
+     }                                                 //
+ }else if(charges.cpu===1 && charges.player===2){
+     let random3=Math.ceil(Math.random()*4);
+     if(random3===1){
+         cpumove='CHARGE';
+     }
+     else if(random3===2){
+         cpumove='ENERGYSHIELD';
+     }  
+     else if(random3===3){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random3===4){
+         cpumove='BEAMSHIELD';
+     }                                                   //
+ }else if(charges.cpu===2 && charges.player===1){
+     let random4=Math.ceil(Math.random()*4);
+     if(random4===1){
+         cpumove='CHARGE';
+     }
+     else if(random4===2){
+         cpumove='ENERGYSHIELD';
+     }  
+     else if(random4===3){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random4===4){
+         cpumove='BEAMCANNON';
+     }                                                    // 
+ }else if(charges.cpu===2 && charges.player===2){
+     let random5=Math.ceil(Math.random()*5);
+     if(random5===1){
+         cpumove='CHARGE';
+     }
+     else if(random5===2){
+         cpumove='ENERGYSHIELD';
+     }  
+     else if(random5===3){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random5===4){
+         cpumove='BEAMCANNON';
+     }
+     else if(random5===5){
+         cpumove='BEAMSHIELD';
+     }                                                      //
+ }else if(charges.cpu===2 && charges.player===0){
+     let random6=Math.ceil(Math.random()*3);
+     if(random6===1){
+         cpumove='CHARGE';
+     }
+     else if(random6===2){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random6===3){
+         cpumove='BEAMCANNON';
+     }                                                       //
+ }else if(charges.cpu===0 && charges.player===2){
+     let random7=Math.ceil(Math.random()*3);
+     if(random7===1){
+         cpumove='CHARGE';
+     }
+     else if(random7===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random7===3){
+         cpumove='BEAMSHIELD'; 
+     }                                                       //
+ }else if(charges.cpu===3 && charges.player===0){
+     let random8=Math.ceil(Math.random()*4);
+     if(random8===1){
+         cpumove='CHARGE';
+     }
+     else if(random8===2){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random8===3){
+         cpumove='BEAMCANNON';
+     }
+     else if(random8===4){
+         cpumove='DESTRUCTODISC';
+     }                                                      //
+ }else if(charges.cpu===0 && charges.player===3){
+     let random9=Math.ceil(Math.random()*4);
+     if(random9===1){
+         cpumove='CHARGE';
+     }
+     else if(random9===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random9===3){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random9===4){
+         cpumove='TELEPORT';
+     }                                                       //
+ }else if(charges.cpu===1 && charges.player===3){
+     let random10=Math.ceil(Math.random()*5);
+     if(random10===1){
+         cpumove='CHARGE';
+     }
+     else if(random10===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random10===3){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random10===4){
+         cpumove='TELEPORT';
+     }
+     else if(random10===5){
+         cpumove='KAMEHAMEHA';
+     }                                                        //
+ }else if(charges.cpu===3 && charges.player===1){
+     let random11=Math.ceil(Math.random()*5);
+     if(random11===1){
+         cpumove='CHARGE';
+     }
+     else if(random11===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random11===3){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random11===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random11===5){
+         cpumove='BEAMCANNON';
+     }                                                       //
+ }else if(charges.cpu===3 && charges.player===2){
+     let random12=Math.ceil(Math.random()*6);
+     if(random12===1){
+         cpumove='CHARGE';
+     }
+     else if(random12===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random12===3){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random12===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random12===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random12===6){
+         cpumove='BEAMSHIELD';
+     }                                                        //
+ }else if(charges.cpu===2 && charges.player===3){
+     let random13=Math.ceil(Math.random()*6);
+     if(random13===1){
+         cpumove='CHARGE';
+     }
+     else if(random13===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random13===3){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random13===4){
+         cpumove='TELEPORT';
+     }
+     else if(random13===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random13===6){
+         cpumove='BEAMSHIELD';
+     }
+ }else if(charges.cpu===4 && charges.player===0){
+     let random14=Math.ceil(Math.random()*5);
+     if(random14===1){
+         cpumove='CHARGE';
+     }
+     else if(random14===2){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random14===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random14===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random14===5){
+         cpumove='BEAMCANNON';
+     }
+ }else if(charges.cpu===0 && charges.player===4){
+     let random15=Math.ceil(Math.random()*5);
+     if(random15===1){
+         cpumove='CHARGE';
+     }
+     else if(random15===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random15===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random15===4){
+         cpumove='TELEPORT';
+     }
+     else if(random15===5){
+         cpumove='BEAMSHIELD';
+     }
+ }else if(charges.cpu===1 && charges.player===4){
+     let random16=Math.ceil(Math.random()*6);
+     if(random16===1){
+         cpumove='CHARGE';
+     }
+     else if(random16===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random16===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random16===4){
+         cpumove='TELEPORT';
+     }
+     else if(random16===5){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random16===6){
+         cpumove='KAMEHAMEHA';
+     }
+ }else if(charges.cpu===4 && charges.player===1){
+     let random17=Math.ceil(Math.random()*6);
+     if(random17===1){
+         cpumove='CHARGE';
+     }
+     else if(random17===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random17===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random17===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random17===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random17===6){
+         cpumove='KAMEHAMEHA';
+     }
+ }else if(charges.cpu===4 && charges.player===2){
+     let random18=Math.ceil(Math.random()*7);
+     if(random18===1){
+         cpumove='CHARGE';
+     }
+     else if(random18===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random18===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random18===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random18===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random18===6){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random18===7){
+         cpumove='BEAMSHIELD';
+     }
+ }else if(charges.cpu===2 && charges.player===4){
+     let random19=Math.ceil(Math.random()*7);
+     if(random19===1){
+         cpumove='CHARGE';
+     }
+     else if(random19===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random19===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random19===4){
+         cpumove='TELEPORT';
+     }
+     else if(random19===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random19===6){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random19===7){
+         cpumove='BEAMSHIELD';
+     }
+ }else if(charges.cpu===3 && charges.player===4){
+     let random20=Math.ceil(Math.random()*8);
+     if(random20===1){
+         cpumove='CHARGE';
+     }
+     else if(random20===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random20===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random20===4){
+         cpumove='TELEPORT';
+     }
+     else if(random20===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random20===6){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random20===7){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random20===8){
+         cpumove='DESTRUCTODISC';
+     }
+ }else if(charges.cpu===4 && charges.player===3){
+     let random21=Math.ceil(Math.random()*8);
+     if(random21===1){
+         cpumove='CHARGE';
+     }
+     else if(random21===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random21===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random21===4){
+         cpumove='TELEPORT';
+     }
+     else if(random21===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random21===6){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random21===7){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random21===8){
+         cpumove='DESTRUCTODISC';
+     }
+ }else if(charges.cpu===4 && charges.player===4){
+     let random22=Math.ceil(Math.random()*9);
+     if(random22===1){
+         cpumove='CHARGE';
+     }
+     else if(random22===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random22===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random22===4){
+         cpumove='TELEPORT';
+     }
+     else if(random22===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random22===6){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random22===7){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random22===8){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random22===9){
+         cpumove='FLASHPROTECTION';
+     }
+ }else if(charges.cpu===5 && charges.player===0){
+     let random23=Math.ceil(Math.random()*6);
+     if(random23===1){
+         cpumove='CHARGE';
+     }
+     else if(random23===2){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random23===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random23===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random23===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random23===6){
+         cpumove='GALICKGUN';
+     }
+ }else if(charges.cpu===0 && charges.player===5){
+     let random24=Math.ceil(Math.random()*6);
+     if(random24===1){
+         cpumove='CHARGE';
+     }
+     else if(random24===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random24===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random24===4){
+         cpumove='TELEPORT';
+     }
+     else if(random24===5){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random24===6){
+         cpumove='SUPERVEST';
+     }
+ }else if(charges.cpu===1 && charges.player===5){
+     let random25=Math.ceil(Math.random()*7);
+     if(random25===1){
+         cpumove='CHARGE';
+     }
+     else if(random25===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random25===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random25===4){
+         cpumove='TELEPORT';
+     }
+     else if(random25===5){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random25===6){
+         cpumove='SUPERVEST';
+     }
+     else if(random25===7){
+         cpumove='KAMEHAMEHA';
+     }
+ }else if(charges.cpu===5 && charges.player===1){
+     let random26=Math.ceil(Math.random()*7);
+     if(random26===1){
+         cpumove='CHARGE';
+     }
+     else if(random26===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random26===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random26===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random26===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random26===6){
+         cpumove='GALICKGUN';
+     }
+     else if(random26===7){
+         cpumove='KAMEHAMEHA';
+     }
+ }else if(charges.cpu===2 && charges.player===5){
+     let random27=Math.ceil(Math.random()*8);
+     if(random27===1){
+         cpumove='CHARGE';
+     }
+     else if(random27===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random27===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random27===4){
+         cpumove='TELEPORT';
+     }
+     else if(random27===5){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random27===6){
+         cpumove='SUPERVEST';
+     }
+     else if(random27===7){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random27===8){
+         cpumove='BEAMCANNON';
+     }
+ }else if(charges.cpu===5 && charges.player===2){
+     let random28=Math.ceil(Math.random()*8);
+     if(random28===1){
+         cpumove='CHARGE';
+     }
+     else if(random28===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random28===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random28===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random28===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random28===6){
+         cpumove='GALICKGUN';
+     }
+     else if(random28===7){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(rando28===8){
+         cpumove='BEAMSHIELD';
+     }
+ }else if(charges.cpu===3 && charges.player===5){
+     let random29=Math.ceil(Math.random()*9);
+     if(random29===1){
+         cpumove='CHARGE';
+     }
+     else if(random29===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random29===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random29===4){
+         cpumove='TELEPORT';
+     }
+     else if(random29===5){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random29===6){
+         cpumove='SUPERVEST';
+     }
+     else if(random29===7){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random29===8){
+         cpumove='BEAMCANNON';
+     }
+     else if(random29===9){
+         cpumove='DESTRUCTODISC';
+     }
+ }else if(charges.cpu===5 && charges.player===3){
+     let random30=Math.ceil(Math.random()*9);
+     if(random30===1){
+         cpumove='CHARGE';
+     }
+     else if(random30===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random30===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random30===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random30===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random30===6){
+         cpumove='GALICKGUN';
+     }
+     else if(random30===7){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random30===8){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random30===9){
+         cpumove='TELEPORT';
+     }
+ }else if(charges.cpu===4 && charges.player===5){
+     let random31=Math.ceil(Math.random()*10);
+     if(random31===1){
+         cpumove='CHARGE';
+     }
+     else if(random31===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random31===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random31===4){
+         cpumove='TELEPORT';
+     }
+     else if(random31===5){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random31===6){
+         cpumove='SUPERVEST';
+     }
+     else if(random31===7){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random31===8){
+         cpumove='BEAMCANNON';
+     }
+     else if(random31===9){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random31===10){
+         cpumove==='FINALFLASH';
+     }
+ }else if(charges.cpu===5 && charges.player===4){
+     let random32=Math.ceil(Math.random()*10);
+     if(random32===1){
+         cpumove='CHARGE';
+     }
+     else if(random32===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random32===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random32===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random32===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random32===6){
+         cpumove='GALICKGUN';
+     }
+     else if(random32===7){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random32===8){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random32===9){
+         cpumove='TELEPORT';
+     }
+     else if(random32===10){
+         cpumove='FLASHPROTECTION';
+     }
+ 
+ }else if(charges.cpu===5 && charges.player===5){
+     let random33=Math.ceil(Math.random()*11);
+     if(random33===1){
+         cpumove='CHARGE';
+     }
+     else if(random33===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random33===3){
+         cpumove='FINALFLASH';
+     }
+     else if(random33===4){
+         cpumove='DESTRUCTODISC';
+     }
+     else if(random33===5){
+         cpumove='BEAMCANNON';
+     }
+     else if(random33===6){
+         cpumove='GALICKGUN';
+     }
+     else if(random33===7){
+         cpumove='KAMEHAMEHA';
+     }
+     else if(random33===8){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random33===9){
+         cpumove='TELEPORT';
+     }
+     else if(random33===10){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random33===11){
+         cpumove==='SUPERVEST';
+     }
+ }else if(charges.cpu>5){
+     cpumove='SPHEREOFDESTRUCTION';
+ }else if(charges.cpu<5 && charges.player>5){
+     let random34=Math.ceil(Math.random()*5);
+     if(random34===1){
+         cpumove='BEAMSHIELD';
+     }
+     else if(random34===2){
+         cpumove='ENERGYSHIELD';
+     }
+     else if(random34===3){
+         cpumove='FLASHPROTECTION';
+     }
+     else if(random34===4){
+         cpumove='TELEPORT';
+     }
+     else if(random34===5){
+         cpumove='SUPERVEST';
+     }
+ }
+ 
+ 
+ 
+ 
+ console.log(`At the end of cpuplay function,cpumove:${cpumove},cpucharges:${charges.cpu}`);
+ return cpumove;
+ 
+ }
+ 
+ function count(cpumove,playermove){
+ 
+     updatemove(playermove);
+     updatemove2(cpumove);
+ 
+ if(cpumove==='CHARGE'){
+         charges.cpu+=1;
+     }else if(cpumove==='KAMEHAMEHA'){
+         charges.cpu+=-1;   
+     }else if(cpumove==='ENERGYSHIELD'||cpumove==='BEAMSHIELD'||cpumove==='TELEPORT'||cpumove==='FLASHPROTECTION'||cpumove==='SUPERVEST'){
+         charges.cpu+=0;
+     }else if(cpumove==='BEAMCANNON'){
+         charges.cpu+=-2;
+     }else if(cpumove==='DESTRUCTODISC'){
+         charges.cpu+=-3;
+     }else if(cpumove==='FINALFLASH'){
+         charges.cpu+=-4;
+     }else if(cpumove==='GALICKGUN'){
+         charges.cpu+=-5;
+     }else if(cpumove==='SPHEREOFDESTRUCTION'){
+         charges.cpu+=-6;
+     }
+ 
+ 
+ 
+     let value;
+     if(playermove==='CHARGE'){
+             value=1;     
+         }
+         else if(playermove==='KAMEHAMEHA'){
+             value=-1;
+         }
+         else if(playermove==='ENERGYSHIELD'||playermove==='BEAMSHIELD'||playermove==='TELEPORT'||playermove==='FLASHPROTECTION'||playermove==='SUPERVEST'){
+             value=0;
+         }
+         else if(playermove==='BEAMCANNON'){
+             value=-2;
+         }
+         else if(playermove==='BEAMSHIELD'){
+             value=0;
+         }
+         else if(playermove==='DESTRUCTODISC'){
+             value=-3;
+         }
+         else if(playermove==='FINALFLASH'){
+             value=-4;
+         }
+         else if(playermove==='GALICKGUN'){
+             value=-5;
+         }
+         else if(playermove==='SPHEREOFDESTRUCTION'){
+             value=-6;
+         }
+ 
+         charges.player+=value;
+ 
+         console.log(`Before setting local storage of count function,cpumove:${cpumove},cpucharges:${charges.cpu}`);
+        
+         updatecharges();
+ 
+ 
+         let playercharges=charges.player;
+         let compcharges=charges.cpu;
+ 
+     output(cpumove,playermove,playercharges);
+ 
+     localStorage.setItem('charges',JSON.stringify(charges));
+ 
+     
+ 
+     
+ 
+ }
+ 
+ 
+ function output(cpumove,playermove,playercharges,compcharges){
+ 
+     result='RESULT';
+     console.log(`CPUMOVE:${cpumove} PLAYERMOVE:${playermove}`);
+ 
+     
+     
+     if(playercharges<0){
+         result='YOU LOSE';
+         score.losses+=1;
+     }else{
+     if(playermove==='KAMEHAMEHA' && (cpumove==='CHARGE'||cpumove==='BEAMSHIELD'||cpumove==='TELEPORT'||cpumove==='FLASHPROTECTION'||cpumove==='SUPERVEST')){
+         result='YOU WIN';
+         score.wins+=1;
+         console.log('a1');
+     }else if(playermove==='BEAMCANNON' && (cpumove==='CHARGE'||cpumove==='ENERGYSHIELD'||cpumove==='TELEPORT'||cpumove==='FLASHPROTECTION'||cpumove==='SUPERVEST'||cpumove==='KAMEHAMEHA')){
+         result='YOU WIN';
+         score.wins+=1;
+         console.log('a2');
+     }else if(playermove==='DESTRUCTODISC' && (cpumove==='CHARGE'||cpumove==='ENERGYSHIELD'||cpumove==='BEAMSHIELD'||cpumove==='FLASHPROTECTION'||cpumove==='SUPERVEST'||cpumove==='KAMEHAMEHA'||cpumove==='BEAMCANNON')){
+         result='YOU WIN';
+         score.wins+=1;
+         console.log('aa3');
+     }else if(playermove==='FINALFLASH' && (cpumove==='CHARGE'||cpumove==='ENERGYSHIELD'||cpumove==='BEAMSHIELD'||cpumove==='TELEPORT'||cpumove==='SUPERVEST'||cpumove==='KAMEHAMEHA'||cpumove==='BEAMCANNON'||cpumove==='DESTRUCTODISC')){
+         result='YOU WIN';
+         score.wins+=1;
+         console.log('a4');
+     }else if(playermove==='GALICKGUN' && (cpumove==='CHARGE'||cpumove==='ENERGYSHIELD'||cpumove==='BEAMSHIELD'||cpumove==='TELEPORT'||cpumove==='FLASHPROTECTION'||cpumove==='KAMEHAMEHA'||cpumove==='BEAMCANNON'||cpumove==='DESTRUCTODISC'||cpumove==='FINALFLASH')){
+         result='YOU WIN';
+         score.wins+=1;
+         console.log('a5');
+     }else if(playermove==='SPHEREOFDESTRUCTION'){
+         result==='YOU WIN';
+         score.wins+=1;
+         console.log('a6');
+     }else if(playermove==='ENERGYSHIELD' && (cpumove==='BEAMCANNON'||cpumove==='DESTRUCTODISC'||cpumove==='FINALFLASH'||cpumove==='GALICKGUN'||cpumove==='SPHEREOFDESTRUCTION')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a7');
+     }else if(playermove==='BEAMSHIELD' && (cpumove==='KAMEHAMEHA'||cpumove==='DESTRUCTODISC'||cpumove==='FINALFLASH'||cpumove==='GALICKGUN'||cpumove==='SPHEREOFDESTRUCTION')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a8');
+     }else if(playermove==='TELEPORT' && (cpumove==='KAMEHAMEHA'||cpumove==='BEAMCANNON'||cpumove==='FINALFLASH'||cpumove==='GALICKGUN'||cpumove==='SPHEREOFDESTRUCTION')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a9');
+     }else if(playermove==='FLASHPROTECTION' && (cpumove==='KAMEHAMEHA'||cpumove==='BEAMCANNON'||cpumove==='DESTRUCTODISC'||cpumove==='GALICKGUN'||cpumove==='SPHEREOFDESTRUCTION')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a10');
+     }else if(playermove==='SUPERVEST' && (cpumove==='KAMEHAMEHA'||cpumove==='BEAMCANNON'||cpumove==='DESTRUCTODISC'||cpumove==='FINALFLASH'||cpumove==='SPHEREOFDESTRUCTION')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a11');
+     }else if(playermove==='CHARGE' && (cpumove==='KAMEHAMEHA'||cpumove==='BEAMCANNON'||cpumove==='DESTRUCTODISC'||cpumove==='FINALFLASH'||cpumove==='SPHEREOFDESTRUCTION'||cpumove==='GALICKGUN')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a12');
+     }else if(playermove==='KAMEHAMEHA' && (cpumove==='BEAMCANNON'||cpumove==='SPHEREOFDESTRUCTION'||cpumove==='DESTRUCTODISC'||cpumove==='FINALFLASH'||cpumove==='GALICKGUN')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a1');
+     }else if(playermove==='BEAMCANNON' && (cpumove==='SPHEREOFDESTRUCTION'||cpumove==='DESTRUCTODISC'||cpumove==='FINALFLASH'||cpumove==='GALICKGUN')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a1');
+     }else if(playermove==='DESTRUCTODISC' && (cpumove==="SPHEREOFDESTRUCTION"||cpumove==='FINALFLASH'||cpumove==='GALICKGUN')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a1');
+     }else if(playermove==='FINALFLASH' && (cpumove==="SPHEREOFDESTRUCTION"||cpumove==='GALICKGUN')){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a1');
+     }else if(playermove==='GALICKGUN' && cpumove==="SPHEREOFDESTRUCTION"){
+         result='YOU LOSE';
+         score.losses+=1;
+         console.log('a1');
+     }else{
+         result='RESULT';
+     }   
+     
+ }
+ 
+     updatescore();
+ 
+     localStorage.setItem('score',JSON.stringify(score));
+ 
+     if(result==='YOU WIN' || result==='YOU LOSE'){
+         charges.cpu=0;
+         charges.player=0;
+         localStorage.removeItem('charges');
+         updatecharges();
+     }
+ 
+     updateresult(result);
+            
+ } 
+ 
+ 
+ function updatecharges(){
+     document.querySelector('.pnum1').innerHTML=`${charges.player}`;
+     document.querySelector('.cnum1').innerHTML=`${charges.cpu}`;
+ }
+ 
+ function updatescore(){
+     document.querySelector('.pnum').innerHTML=`${score.wins}`;
+     document.querySelector('.cnum').innerHTML=`${score.losses}`;
+ }
+     
+ function updatemove(playermove){
+     document.querySelector('.subtext').innerHTML=`${playermove}`;
+     document.querySelector('.pcontainer').innerHTML=`<img class="mainplayer" src="images/${playermove}.gif">`
+ }
+ 
+ function updatemove2(cpumove){
+     document.querySelector('.subtext1').innerHTML=`${cpumove}`;
+     document.querySelector('.pcontainer1').innerHTML=`<img class="mainplayer" src="images/${cpumove}.gif">`
+ }
+ 
+ function updateresult(result){
+     document.querySelector('.finalresult')
+     .innerHTML=`${result}`;
+ }
+     
+ 
+ 
+ 
+    
+</script>
+
+</body>
+
+</html>
